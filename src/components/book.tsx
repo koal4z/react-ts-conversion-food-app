@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
+import Screen from './screen';
+import AddRecipeForm from './addRecipe';
+
 type Recipes = {
   recipe: string;
   quantity: string;
   unit: string;
 };
+
 const Book = () => {
   const [menu, setMenu] = useState<string>('');
   const [recipe, setRecipe] = useState<string>('');
@@ -55,66 +59,22 @@ const Book = () => {
 
   return (
     <div className="book">
-      <form className="form">
-        <label htmlFor="menu">Menu</label>
-        <input
-          type="input"
-          id="menu"
-          name="menu"
-          onChange={handleChange}
-          value={menu}
-        />
-        <label htmlFor="recipe">Recipes</label>
-        <input
-          type="input"
-          id="recipe"
-          name="recipe"
-          onChange={handleChange}
-          value={recipe}
-        />
-        <label htmlFor="quantity">Quantity</label>
-        <input
-          type="input"
-          id="quantity"
-          name="quantity"
-          onChange={handleChange}
-          value={quantity}
-        />
-        <label htmlFor="unit">Unit</label>
-        <select id="unit" name="unit" onChange={handleSelect}>
-          <option value="">--select unit--</option>
-          <option value="g">g</option>
-          <option value="kg">kg</option>
-        </select>
-        <input type="button" value="+ Recipe" onClick={addRecipe} />
-        <input type="reset" value="clear all" onClick={clearBoard} />
-        <input type="submit" value="keep in book" />
-      </form>
-
-      <div className="board">
-        <h3>- menu</h3>
-        {menu ? <h4>{menu}</h4> : <p>Your Menu</p>}
-        <h3>- recipes</h3>
-        <ul className="recipes__box">
-          {recipes.map((recipe, i) => {
-            return (
-              <li className="recipes__items" key={i}>
-                <div>
-                  <span>{recipe.recipe}</span> <span>{recipe.quantity}</span>{' '}
-                  <span>{recipe.unit}</span> <span>converter</span>
-                </div>
-              </li>
-            );
-          })}
-          {recipe || quantity ? (
-            <div>
-              <span>{recipe}</span> <span>{quantity}</span> <span>{unit}</span>
-            </div>
-          ) : (
-            <li>...add more recipe</li>
-          )}
-        </ul>
-      </div>
+      <AddRecipeForm
+        menu={menu}
+        recipe={recipe}
+        quantity={quantity}
+        handleChange={handleChange}
+        handleSelect={handleSelect}
+        addRecipe={addRecipe}
+        clearBoard={clearBoard}
+      />
+      <Screen
+        menu={menu}
+        recipe={recipe}
+        recipes={recipes}
+        unit={unit}
+        quantity={quantity}
+      />
     </div>
   );
 };
