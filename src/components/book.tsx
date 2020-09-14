@@ -11,7 +11,15 @@ const Book = () => {
   const [recipe, setRecipe] = useState<string>('');
   const [quantity, setQuantity] = useState<string>('');
   const [unit, setUnit] = useState<string>('');
-  const [recipes, setRecipes] = useState<Recipes[]>([]);
+  const [recipes, setRecipes] = useState<Recipes[]>([
+    {
+      recipe: 'recipe',
+      quantity: 'quantity',
+      unit: 'kg',
+      unitConvert: '1000',
+      convert: '1000'
+    }
+  ]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const input = e.target.value;
@@ -49,8 +57,8 @@ const Book = () => {
         recipe: recipe,
         quantity: quantity,
         unit: unit,
-        unitConvert: '',
-        convert: ''
+        unitConvert: '-',
+        convert: '-'
       }
     ]);
     setRecipe('');

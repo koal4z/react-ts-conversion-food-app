@@ -3,6 +3,8 @@ import React from 'react';
 import Input from './input';
 import Select from './select';
 
+import styles from '../css/addRecipe.module.css';
+
 interface AddRecipeFormType {
   menu: string;
   recipe: string;
@@ -24,7 +26,7 @@ const AddRecipeForm = (props: AddRecipeFormType) => {
     clearBoard
   } = props;
   return (
-    <form className="form">
+    <form className={styles.form}>
       <Input
         label="menu"
         type="input"

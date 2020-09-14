@@ -1,9 +1,21 @@
+:root {
+  --font--size--primary: 1.5rem;
+  --color-primary: rgb(229, 223, 136);
+  --color-secondary: rgb(163, 126, 186);
+  --color-white: rgb(232, 232, 232);
+  --color-dark: rgb(76, 76, 76);
+}
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5% !important;
 }
 
 body {
@@ -14,6 +26,10 @@ body {
   width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.app {
+  background-color: var(--color-primary);
+}
+
+input {
+  padding-left: 1rem;
 }
