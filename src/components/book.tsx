@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Screen from './screen';
 import AddRecipeForm from './addRecipe';
+import Dropdown from './dropdown';
 
 type Recipes = {
   recipe: string;
@@ -75,6 +76,7 @@ const Book = () => {
         unit={unit}
         quantity={quantity}
       />
+      <Dropdown />
     </div>
   );
 };

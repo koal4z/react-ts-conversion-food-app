@@ -1,7 +1,8 @@
 import React from 'react';
 
-import styles from '../css/converter.module.css';
-interface screenTypes {
+import styles from '../css/screen.module.css';
+
+interface Props {
   menu: String;
   recipes: Recipes[];
   recipe: String;
@@ -15,7 +16,7 @@ type Recipes = {
   unit: string;
 };
 
-const Screen = (props: screenTypes) => {
+const Screen = (props: Props) => {
   const { menu, recipes, recipe, unit, quantity } = props;
   return (
     <div className="board">
@@ -26,10 +27,12 @@ const Screen = (props: screenTypes) => {
         {recipes.map((recipe: Recipes, i) => {
           return (
             <li className="recipes__items" key={i}>
-              <div>
-                <span>{recipe.recipe}</span> <span>{recipe.quantity}</span>{' '}
-                <span>{recipe.unit}</span>{' '}
-                <div className={styles.converter}>converter</div>
+              <div className={styles['recipes__items--box']}>
+                <div>{recipe.recipe}</div>
+                <div>{recipe.quantity}</div>
+                <div>{recipe.unit}</div>
+                <div>convert</div>
+                <div>unit</div>
               </div>
             </li>
           );

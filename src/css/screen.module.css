@@ -1,0 +1,7 @@
+.recipes__items--box {
+  display: flex;
+}
+
+.recipes__items--box > div {
+  margin: 0.5rem 1.5rem;
+}

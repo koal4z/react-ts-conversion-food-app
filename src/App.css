@@ -9,6 +9,7 @@
 .book {
   display: flex;
   border: dashed 1px #000000;
+  position: relative;
 }
 
 .board {
