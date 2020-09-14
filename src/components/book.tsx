@@ -4,11 +4,7 @@ import Screen from './screen';
 import AddRecipeForm from './addRecipe';
 import Dropdown from './dropdown';
 
-type Recipes = {
-  recipe: string;
-  quantity: string;
-  unit: string;
-};
+import { Recipes } from './types';
 
 const Book = () => {
   const [menu, setMenu] = useState<string>('');
@@ -47,7 +43,16 @@ const Book = () => {
     if (!/^[0-9]+/.test(quantity) || parseInt(quantity) <= 0) {
       return alert('quantity must have to add only number or more than 0.');
     }
-    setRecipes([...recipes, { recipe: recipe, quantity: quantity, unit: unit }]);
+    setRecipes([
+      ...recipes,
+      {
+        recipe: recipe,
+        quantity: quantity,
+        unit: unit,
+        unitConvert: '',
+        convert: ''
+      }
+    ]);
     setRecipe('');
     setQuantity('');
   };
@@ -58,6 +63,21 @@ const Book = () => {
     setRecipes([]);
   };
 
+  const selectConvert = (e: React.FormEvent<HTMLSelectElement>): void => {
+    e.preventDefault();
+    const unitConvert = e.currentTarget.value;
+    if (recipes.length !== 0) {
+      setRecipes(
+        recipes.map((recipe: Recipes) => {
+          return {
+            ...recipe,
+            convert: converter(unit, unitConvert, recipe.quantity),
+            unitConvert: unitConvert
+          };
+        })
+      );
+    }
+  };
   return (
     <div className="book">
       <AddRecipeForm
@@ -76,9 +96,29 @@ const Book = () => {
         unit={unit}
         quantity={quantity}
       />
-      <Dropdown />
+      <Dropdown setConvert={selectConvert} />
     </div>
   );
 };
 
 export default Book;
+
+const converter = (unitInit: string, unitFinal: string, val: string): string => {
+  if (unitInit === unitFinal) {
+    return val;
+  }
+
+  if (unitInit === 'g') {
+    if (unitFinal === 'kg') {
+      return (parseInt(val, 10) / 1000).toFixed(2);
+    }
+  }
+
+  if (unitInit === 'kg') {
+    if (unitFinal === 'g') {
+      return (parseInt(val, 10) * 1000).toFixed(2);
+    }
+  }
+
+  return val;
+};

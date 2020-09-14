@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../css/screen.module.css';
+import { Recipes } from './types';
 
 interface Props {
   menu: String;
@@ -9,12 +10,6 @@ interface Props {
   unit: String;
   quantity: String;
 }
-
-type Recipes = {
-  recipe: string;
-  quantity: string;
-  unit: string;
-};
 
 const Screen = (props: Props) => {
   const { menu, recipes, recipe, unit, quantity } = props;
@@ -31,15 +26,19 @@ const Screen = (props: Props) => {
                 <div>{recipe.recipe}</div>
                 <div>{recipe.quantity}</div>
                 <div>{recipe.unit}</div>
-                <div>convert</div>
-                <div>unit</div>
+                <div>{recipe.convert}</div>
+                <div>{recipe.unitConvert}</div>
               </div>
             </li>
           );
         })}
         {recipe || quantity ? (
           <div>
-            <span>{recipe}</span> <span>{quantity}</span> <span>{unit}</span>
+            <div className={styles['recipes__items--box']}>
+              <div>{recipe}</div>
+              <div>{quantity}</div>
+              <div>{unit}</div>
+            </div>
           </div>
         ) : (
           <li>...add more recipe</li>
