@@ -10,3 +10,9 @@
   text-transform: uppercase;
   padding: 2rem;
 }
+
+.selector__box > select {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}

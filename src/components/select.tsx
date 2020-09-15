@@ -9,7 +9,7 @@ const Select = (props: select) => {
     <>
       <label htmlFor="unit">Unit</label>
       <select id="unit" name="unit" onChange={props.onChange}>
-        <option value="">--select unit--</option>
+        <option value="-">--select unit--</option>
         <option value="g">g</option>
         <option value="kg">kg</option>
       </select>

@@ -26,9 +26,9 @@ const Screen = (props: Props) => {
         <li className={styles.recipes__items}>
           <ul className={styles['recipes__items--box']}>
             <li className={styles['recipes__items--head']}>Recipe</li>
-            <li className={styles['recipes__items--head']}>Quantity</li>
+            <li className={styles['recipes__items--head']}>Qty</li>
             <li className={styles['recipes__items--head']}>Unit</li>
-            <li className={styles['recipes__items--head']}>Quantity</li>
+            <li className={styles['recipes__items--head']}>Qty</li>
             <li className={styles['recipes__items--head']}>Unit</li>
           </ul>
         </li>

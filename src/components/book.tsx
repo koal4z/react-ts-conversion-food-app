@@ -13,11 +13,25 @@ const Book = () => {
   const [unit, setUnit] = useState<string>('');
   const [recipes, setRecipes] = useState<Recipes[]>([
     {
-      recipe: 'recipe',
-      quantity: 'quantity',
-      unit: 'kg',
-      unitConvert: '1000',
-      convert: '1000'
+      recipe: 'flour',
+      quantity: '1500',
+      unit: 'g',
+      unitConvert: '',
+      convert: ''
+    },
+    {
+      recipe: 'bread',
+      quantity: '1500',
+      unit: 'g',
+      unitConvert: '',
+      convert: ''
+    },
+    {
+      recipe: 'vegetables',
+      quantity: '1500',
+      unit: 'g',
+      unitConvert: '',
+      convert: ''
     }
   ]);
 
@@ -74,12 +88,12 @@ const Book = () => {
   const selectConvert = (e: React.FormEvent<HTMLSelectElement>): void => {
     e.preventDefault();
     const unitConvert = e.currentTarget.value;
-    if (recipes.length !== 0) {
+    if (recipes.length !== 0 && unitConvert !== '--select unit--') {
       setRecipes(
         recipes.map((recipe: Recipes) => {
           return {
             ...recipe,
-            convert: converter(unit, unitConvert, recipe.quantity),
+            convert: converter(recipe.unit, unitConvert, recipe.quantity),
             unitConvert: unitConvert
           };
         })
@@ -112,20 +126,12 @@ const Book = () => {
 export default Book;
 
 const converter = (unitInit: string, unitFinal: string, val: string): string => {
-  if (unitInit === unitFinal) {
-    return val;
+  if (unitInit === 'g' && unitFinal === 'kg') {
+    return (parseInt(val) * 0.001).toFixed(1);
   }
 
-  if (unitInit === 'g') {
-    if (unitFinal === 'kg') {
-      return (parseInt(val, 10) / 1000).toFixed(2);
-    }
-  }
-
-  if (unitInit === 'kg') {
-    if (unitFinal === 'g') {
-      return (parseInt(val, 10) * 1000).toFixed(2);
-    }
+  if (unitInit === 'kg' && unitFinal === 'g') {
+    return (parseInt(val) * 1000).toFixed(1);
   }
 
   return val;

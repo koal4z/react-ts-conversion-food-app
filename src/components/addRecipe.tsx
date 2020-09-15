@@ -51,7 +51,9 @@ const AddRecipeForm = (props: AddRecipeFormType) => {
         onChange={handleChange}
         value={quantity}
       />
+      <div className={styles.selector__box}>
       <Select onChange={handleSelect} />
+      </div>
       <input type="button" value="+ Recipe" onClick={addRecipe} />
       <input type="reset" value="clear all" onClick={clearBoard} />
       <input type="submit" value="keep in book" />
