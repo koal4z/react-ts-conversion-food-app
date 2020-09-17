@@ -61,7 +61,7 @@ const Book = (props: Props) => {
     }
   };
 
-  const addRecipe = (e: React.FormEvent<HTMLInputElement>): void => {
+  const addRecipe = (e: React.FormEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     if (recipe === '' || quantity === '' || unit === '') {
       setIsAlert({
