@@ -1,5 +1,5 @@
 .form {
-  border: dashed 1px #000000;
+  border: solid 0.5rem var(--color-primary);
   display: flex;
   flex-direction: column;
   padding: 1rem;

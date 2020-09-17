@@ -3,6 +3,8 @@
   background-color: #e8e8e8;
   padding-top: 3.5rem;
   width: 100%;
+  border: solid 0.5rem var(--color-primary);
+  border-left: none;
 }
 
 .board__header {

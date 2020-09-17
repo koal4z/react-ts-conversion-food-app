@@ -3,13 +3,13 @@ import React from 'react';
 import styles from '../css/screen.module.css';
 import { Recipes } from './types';
 
-interface Props {
+type Props = {
   menu: String;
   recipes: Recipes[];
   recipe: String;
   unit: String;
   quantity: String;
-}
+};
 
 const Screen = (props: Props) => {
   const { menu, recipes, recipe, unit, quantity } = props;

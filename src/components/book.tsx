@@ -4,9 +4,14 @@ import Screen from './screen';
 import AddRecipeForm from './addRecipe';
 import Dropdown from './dropdown';
 
-import { Recipes } from './types';
+import { Recipes, alertType } from './types';
 
-const Book = () => {
+type Props = {
+  setIsAlert: ({ message, status }: alertType) => void;
+};
+
+const Book = (props: Props) => {
+  const { setIsAlert } = props;
   const [menu, setMenu] = useState<string>('');
   const [recipe, setRecipe] = useState<string>('');
   const [quantity, setQuantity] = useState<string>('');
@@ -59,11 +64,19 @@ const Book = () => {
   const addRecipe = (e: React.FormEvent<HTMLInputElement>): void => {
     e.preventDefault();
     if (recipe === '' || quantity === '' || unit === '') {
-      return alert('recipe or quantity or unit must have to input.');
+      setIsAlert({
+        message: 'recipe or quantity or unit must have to input.',
+        status: true
+      });
+      return;
     }
 
     if (!/^[0-9]+/.test(quantity) || parseInt(quantity) <= 0) {
-      return alert('quantity must have to add only number or more than 0.');
+      setIsAlert({
+        message: 'quantity must have to add only number or more than 0.',
+        status: true
+      });
+      return;
     }
     setRecipes([
       ...recipes,

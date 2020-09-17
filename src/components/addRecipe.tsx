@@ -5,7 +5,7 @@ import Select from './select';
 
 import styles from '../css/addRecipe.module.css';
 
-interface AddRecipeFormType {
+type Props = {
   menu: string;
   recipe: string;
   quantity: string;
@@ -13,9 +13,9 @@ interface AddRecipeFormType {
   handleSelect(e: React.FormEvent<HTMLSelectElement>): void;
   addRecipe(e: React.FormEvent<HTMLInputElement>): void;
   clearBoard(): void;
-}
+};
 
-const AddRecipeForm = (props: AddRecipeFormType) => {
+const AddRecipeForm = (props: Props) => {
   const {
     menu,
     handleChange,
@@ -52,7 +52,7 @@ const AddRecipeForm = (props: AddRecipeFormType) => {
         value={quantity}
       />
       <div className={styles.selector__box}>
-      <Select onChange={handleSelect} />
+        <Select onChange={handleSelect} />
       </div>
       <input type="button" value="+ Recipe" onClick={addRecipe} />
       <input type="reset" value="clear all" onClick={clearBoard} />

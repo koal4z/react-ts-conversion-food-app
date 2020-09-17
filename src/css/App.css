@@ -1,17 +1,15 @@
 .app {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   flex-direction: column;
 }
 
 .book {
   display: flex;
-  border: dashed 1px #000000;
   position: relative;
-  width: 70%;
+  width: 100%;
   min-width: 70rem;
+  height: 100%;
 }
 
 .recipes__box {

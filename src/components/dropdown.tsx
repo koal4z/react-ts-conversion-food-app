@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from '../css/dropdown.module.css';
 
-interface Props {
+type Props = {
   setConvert(e: React.FormEvent<HTMLSelectElement>): void;
-}
+};
 
 const Dropdown = (props: Props) => {
   const { setConvert } = props;

@@ -1,0 +1,25 @@
+.alert {
+  position: absolute;
+  z-index: 100;
+  background-color: #f8d7da;
+  color: #b7637c;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #b7637c;
+
+  display: flex;
+  border-radius: 0 0 2.5rem 2.5rem;
+  padding: 1.5rem 2.5rem;
+  justify-content: space-between;
+}
+
+.alert > div:nth-child(2) {
+  margin: 0 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.icon__box {
+  font-size: 2rem;
+}
